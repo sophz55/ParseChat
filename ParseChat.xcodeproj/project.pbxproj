@@ -10,6 +10,9 @@
 		864A00B9BC3058155DBE34C4 /* libPods-ParseChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B43618D8A363D369747D1DF /* libPods-ParseChatUITests.a */; };
 		973805D9947A4311FB091498 /* libPods-ParseChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC099CF7CCE5E79E1E9CC535 /* libPods-ParseChat.a */; };
 		E5BB703C9763130C779E2C9C /* libPods-ParseChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7CC357F443848E6C23F616 /* libPods-ParseChatTests.a */; };
+		F35684D220F3DCA100FBB1A4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F35684D120F3DCA100FBB1A4 /* LoginViewController.m */; };
+		F35684D520F3E75200FBB1A4 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F35684D420F3E75200FBB1A4 /* ChatViewController.m */; };
+		F35684D920F3FF3000FBB1A4 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F35684D820F3FF3000FBB1A4 /* ChatCell.m */; };
 		F38F757720F3D04400B8EDC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F38F757620F3D04400B8EDC9 /* AppDelegate.m */; };
 		F38F757D20F3D04400B8EDC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F38F757B20F3D04400B8EDC9 /* Main.storyboard */; };
 		F38F757F20F3D04500B8EDC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38F757E20F3D04500B8EDC9 /* Assets.xcassets */; };
@@ -44,6 +47,12 @@
 		6B43618D8A363D369747D1DF /* libPods-ParseChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParseChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62C8FD214B7A71861822741 /* Pods-ParseChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseChat/Pods-ParseChat.debug.xcconfig"; sourceTree = "<group>"; };
 		EE9020279584A8AB15A52F74 /* Pods-ParseChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParseChatUITests/Pods-ParseChatUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F35684D020F3DCA100FBB1A4 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F35684D120F3DCA100FBB1A4 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F35684D320F3E75200FBB1A4 /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		F35684D420F3E75200FBB1A4 /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		F35684D720F3FF3000FBB1A4 /* ChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		F35684D820F3FF3000FBB1A4 /* ChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		F38F757220F3D04400B8EDC9 /* ParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38F757520F3D04400B8EDC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F38F757620F3D04400B8EDC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -113,6 +122,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F35684CF20F3D46B00FBB1A4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F35684D020F3DCA100FBB1A4 /* LoginViewController.h */,
+				F35684D120F3DCA100FBB1A4 /* LoginViewController.m */,
+				F35684D320F3E75200FBB1A4 /* ChatViewController.h */,
+				F35684D420F3E75200FBB1A4 /* ChatViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F35684D620F3FF0E00FBB1A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F35684D720F3FF3000FBB1A4 /* ChatCell.h */,
+				F35684D820F3FF3000FBB1A4 /* ChatCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F38F756920F3D04400B8EDC9 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +167,8 @@
 		F38F757420F3D04400B8EDC9 /* ParseChat */ = {
 			isa = PBXGroup;
 			children = (
+				F35684D620F3FF0E00FBB1A4 /* Views */,
+				F35684CF20F3D46B00FBB1A4 /* ViewControllers */,
 				F38F757520F3D04400B8EDC9 /* AppDelegate.h */,
 				F38F757620F3D04400B8EDC9 /* AppDelegate.m */,
 				F38F757B20F3D04400B8EDC9 /* Main.storyboard */,
@@ -377,6 +408,9 @@
 			files = (
 				F38F758520F3D04500B8EDC9 /* main.m in Sources */,
 				F38F757720F3D04400B8EDC9 /* AppDelegate.m in Sources */,
+				F35684D520F3E75200FBB1A4 /* ChatViewController.m in Sources */,
+				F35684D920F3FF3000FBB1A4 /* ChatCell.m in Sources */,
+				F35684D220F3DCA100FBB1A4 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
