@@ -9,4 +9,8 @@
 
 @interface ChatCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *chatMessageLabel;
+
+- (void)configureCellWithText:(NSString *)text;
+
 @end

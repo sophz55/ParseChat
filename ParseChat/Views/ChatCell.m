@@ -20,4 +20,8 @@
     // Configure the view for the selected state
 }
 
+- (void)configureCellWithText:(NSString *)text {
+    self.chatMessageLabel.text = text;
+}
+
 @end

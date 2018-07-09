@@ -6,6 +6,7 @@
 //
 
 #import "ChatViewController.h"
+#import "ChatCell.h"
 #import "Parse.h"
 
 @interface ChatViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -34,26 +35,31 @@
 - (void)onTimer {
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Message_fbu2018"];
     query.limit = 20;
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            // do something with the array of object returned by the call
+            self.chatMessages = posts;
+            [self.chatTableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    
-//    self.chatMessages = query;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.;
+    return self.chatMessages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     
+    PFObject *object = (PFObject *)self.chatMessages[indexPath.row];
+    
+    [cell configureCellWithText:object[@"text"]];
+    
+    return cell;
 }
 
 - (IBAction)didTapSend:(id)sender {
@@ -69,7 +75,6 @@
             NSLog(@"Problem saving message: %@", error.localizedDescription);
         }
     }];
-    
 }
 
 /*
