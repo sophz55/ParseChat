@@ -7,7 +7,6 @@
 
 #import "LoginViewController.h"
 #import "Parse.h"
-#import "Dog.h"
 
 @interface LoginViewController ()
 
@@ -37,15 +36,13 @@
     NSString *password = self.passwordTextField.text;
     if (![username isEqual:@""] && ![password isEqual:@""]) {
         newUser.username = username;
-//    newUser.email = self.emailField.text;
         newUser.password = password;
         
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                [self createAlertWithTitle:@"Error signing up" alertMessage:[NSString stringWithFormat:@"%@", error.localizedDescription]];
             } else {
-                NSLog(@"User registered successfully");
                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             }
         }];
@@ -61,11 +58,9 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
+            [self createAlertWithTitle:@"Error logging you in" alertMessage:[NSString stringWithFormat:@"%@", error.localizedDescription]];
         } else {
-            NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-
         }
     }];
 }
@@ -74,27 +69,20 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
    
     // create a cancel action
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        // handle cancel response here. Doing nothing will dismiss the view.
-    }];
-    
-    // add the cancel action to the alertController
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
     [alert addAction:cancelAction];
     
     // create an OK action
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
-    }];
-    // add the OK action to the alert controller
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
     [alert addAction:okAction];
     
     [self presentViewController:alert animated:YES completion:^{
         // optional code for what happens after the alert controller has finished presenting
     }];
     
-//    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
-//        // optional code for what happens after the alert controller has finished presenting
-//    }];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
+    }];
 }
 
 /*
